@@ -1,11 +1,12 @@
--- Obtém a tabela com todos os cabeçalhos da requisição
-local headers = ngx.req.get_headers()
--- Acessa o cabeçalho "Origin" especificamente
-local origin = headers["Origin"]
+-- atribuindo o lua rocks
 
-if origin then
-    -- A variável 'origin' contém o valor do cabeçalho, ex: "https://www.exemplo.com"
-    ngx.say("A origem da requisição é: " .. origin)
-else
-    ngx.say("Cabeçalho 'Origin' não encontrado.")
-end
+local version = _VERSION:sub(5,8)
+package.cpath = "./lua_modules/lib64/lua/"..version.."?.so;./deps/?.so;" .. package.cpath
+
+local bcrypt = require('bcrypt')
+
+local password = "123"
+local hashed = bcrypt.digest(password, 10)
+
+ngx.header.content_type = "text/plain"
+ngx.say("Hello World \n" .. hashed)
