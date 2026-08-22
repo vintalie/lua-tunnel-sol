@@ -1,7 +1,7 @@
 -- atribuindo o lua rocks
 
-local v = _VERSION:sub(5,8)
-package.cpath = "./lua_modules/lib64/lua/"..v.."?.so;./deps/?.so;" .. package.cpath
+local _VERSION = _VERSION:sub(5,8)
+package.cpath = "./lua_modules/lib64/lua/"..version.."?.so;./deps/?.so;" .. package.cpath
 
 local bcrypt = require('bcrypt')
 
