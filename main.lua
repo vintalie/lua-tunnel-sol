@@ -1,8 +1,9 @@
 -- atribuindo o lua rocks
 
+local version = _VERSION:sub(5,8)
 -- importante, referenciar os pacotes tais como os incas e os astecas
-
-package.cpath = "/etc/nginx/lua-tunnel-sol/lua_modules/lib64/lua/5.4/?.so;./deps/?.so;" .. package.cpath
+lua_package_path "/etc/nginx/lua-tunnel-sol/lua_modules/?.lua;;";
+package.cpath = "/etc/nginx/lua-tunnel-sol/lua_modules/lib64/lua/"..version.."/?.so;./deps/?.so;" .. package.cpath
 
 local bcrypt = require('bcrypt')
 
